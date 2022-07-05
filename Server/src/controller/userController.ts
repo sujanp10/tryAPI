@@ -12,6 +12,7 @@ export const signupUser: RequestHandler = async (
   next: NextFunction
 ) => {
   const { name, email, password }: IUser = req.body;
+  console.log(name, email, password);
   try {
     const existingUser = await User.findOne({ email });
     if (existingUser) return next(createHttpError(422, "User already exists!"));

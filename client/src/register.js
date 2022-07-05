@@ -1,18 +1,18 @@
 import { useState } from "react";
 
 const Register = () => {
-    const [userName, setUserName] = useState('');
-    const [userEmail, setEmail] = useState('');
-    const [userPassword, setPassword] = useState('');
+    const [name, setUserName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [isPending, setIsPending] = useState(false);
 
     const handleSubmit = (e) => {
         setIsPending(true)
 
         e.preventDefault();
-        const blog = { userName, userEmail, userPassword };
+        const blog = { name, email, password };
 
-        fetch('http://localhost:3000/users', {
+        fetch('http://localhost:9000/signup', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(blog)
@@ -31,7 +31,7 @@ const Register = () => {
                 <input
                     type="text"
                     required
-                    value={userName}
+                    value={name}
                     onChange={(e) => setUserName(e.target.value)}
                 />
                 <label>
@@ -40,7 +40,7 @@ const Register = () => {
                 <input
                     type="email"
                     required
-                    value={userEmail}
+                    value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 ></input>
                 <label>
@@ -49,7 +49,7 @@ const Register = () => {
                 <input
                     type="password"
                     required
-                    value={userPassword}
+                    value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 ></input>
 
